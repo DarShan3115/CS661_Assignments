@@ -92,6 +92,7 @@ def isoLine(C):
             p3 = (T+1,i)
             Insertion(p0,p1,p2,p3)
         T += 1
+        if T > B or L > B : break
         for i in range(T,B+1) :
             p0 = (i,R)
             p1 = (i,R+1)
@@ -99,22 +100,22 @@ def isoLine(C):
             p3 = (i+1,R)
             Insertion(p0,p1,p2,p3)
         R -= 1
-        if T <= B :
-            for i in range(R,L-1,-1) :
-                p0 = (B,i)
-                p1 = (B,i+1)
-                p2 = (B+1,i+1)
-                p3 = (B+1,i)
-                Insertion(p0,p1,p2,p3)
-            B -= 1
-        if L <= R :
-            for i in range(B,T-1,-1) :
-                p0 = (i,L)
-                p1 = (i,L+1)
-                p2 = (i+1,L+1)
-                p3 = (i+1,L)
-                Insertion(p0,p1,p2,p3)
-            L += 1
+        if T > B or L > B : break
+        for i in range(R,L-1,-1) :
+            p0 = (B,i)
+            p1 = (B,i+1)
+            p2 = (B+1,i+1)
+            p3 = (B+1,i)
+            Insertion(p0,p1,p2,p3)
+        B -= 1
+        if T > B or L > B : break
+        for i in range(B,T-1,-1) :
+            p0 = (i,L)
+            p1 = (i,L+1)
+            p2 = (i+1,L+1)
+            p3 = (i+1,L)
+            Insertion(p0,p1,p2,p3)
+        L += 1
     
     isoLineData.SetPoints(isoLinePoints)
     isoLineData.SetLines(isoLineLines)
